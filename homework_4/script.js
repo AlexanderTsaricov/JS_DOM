@@ -34,3 +34,32 @@ messageBtn.addEventListener("click", function (e) {
  *        ■ Если поле пустое, подсветите его (добавьте класс error).
  *        ■ Если поле заполнено, уберите подсветку (удалите класс error).
  */
+const form = document.querySelector("form");
+const inputControl = document.querySelector('input[class="form-control"]');
+const selectControl = document.querySelector('select[class="form-control"]');
+inputControl.addEventListener("input", function (e) {
+    if (inputControl.value.length == 0) {
+        inputControl.classList.add("error");
+    } else {
+        inputControl.classList.remove("error");
+    }
+});
+
+selectControl.addEventListener("change", function (e) {
+    if (selectControl.value == "") {
+        selectControl.classList.add("error");
+    } else {
+        selectControl.classList.remove("error");
+    }
+});
+
+form.addEventListener("submit", function (e) {
+    if (inputControl.value.length == 0) {
+        e.preventDefault();
+        inputControl.classList.add("error");
+    }
+    if (selectControl.value == "") {
+        e.preventDefault();
+        selectControl.classList.add("error");
+    }
+});
